@@ -16,6 +16,183 @@
     <p>Please provide your details to make a reservation.</p>
     <section>
         <h3>Personal Information</h3>
+        <form method="get">
+
+        <!--
+          <fieldset> groups related controls.
+          <legend> gives the group a meaningful name.
+        -->
+        <fieldset>
+
+          <legend>Reservation Information</legend>
+
+          <!-- =====================================================
+               NAME
+               ===================================================== -->
+
+          <!--
+            for="employeeId" must match id="employeeId".
+            This connects the visible label to the input.
+          -->
+          <label for="Name">Name</label>
+          <!--for connect the label to input id-->
+          <input
+            id="Name"
+            name="Name"
+            type="text"
+            required
+          >
+          <!-- <br> new line-->
+          <br><br>
+        <label for ="Email">Email</label>
+        <input id="Email"
+            name="Email"
+            type="email"
+            required
+            >
+            <br><br>
+        <label for ="PhoneNumber">Phone Number</label>
+        <input id="PhoneNumber"
+            name="PhoneNumber"
+            type="tel"
+            required
+            >
+            <br><br>
+
+          <!-- =====================================================
+               EXPENSE DATE
+               ===================================================== -->
+
+          <label for="StartDate">Start Date</label>
+
+          <input
+            id="StartDate"
+            name="StartDate"
+            type="date"
+            required
+          >
+
+          <br><br>
+            <label for="EndDate">End Date</label>
+
+          <input
+            id="EndDate"
+            name="EndDate"
+            type="date"
+            required
+          >
+          <br><br>
+
+          <!-- =====================================================
+               CATEGORY
+               ===================================================== -->
+
+          <label for="category">Type of Rooms</label>
+
+          <!--
+            <select> is appropriate because the business allows
+            a known set of categories.
+          -->
+          <select
+            id="category"
+            name="category"
+            required
+          >
+            <option value="">Choose a category</option>
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+          </select>
+
+          <br><br>
+
+          <!-- =====================================================
+               AMOUNT
+               ===================================================== -->
+
+          <label for="amount">Number of Guests</label>
+
+          <!--
+            Native constraints:
+            required   = cannot be empty
+            min="0.01" = must be greater than zero
+            step="0.01" = allows values such as 184.50
+
+            IMPORTANT:
+            We do NOT set max="5000".
+            An amount above $5,000 is still VALID data.
+            It simply triggers a different business workflow later.
+          -->
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            required
+            min="1"
+            step="1"
+          >
+
+          <br><br>
+
+          <!-- =====================================================
+               DESCRIPTION
+               ===================================================== -->
+
+          <label for="description">Special Requests</label>
+          <br>
+
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            cols="45"
+            required
+          ></textarea>
+
+          <br><br>
+
+          <!-- =====================================================
+               RECEIPT CHECKBOX
+               ===================================================== -->
+
+          <!--
+            Checkbox = yes/no flag.
+
+            BUSINESS RULE FOR LATER:
+            If amount > $75, a receipt is required.
+
+            Basic HTML cannot express this conditional rule by itself.
+            JavaScript and server/application logic will handle it later.
+          -->
+          <input
+            id="receiptAttached"
+            name="receiptAttached"
+            type="checkbox"
+            value="yes"
+          >
+
+          <label for="receiptAttached">
+            Receipt attached
+          </label>
+
+        </fieldset>
+
+        <br>
+
+        <!--
+          type="submit" asks the browser to submit the form.
+
+          Before submission, the browser checks the native constraints.
+          Try:
+          - leaving a required field empty
+          - entering amount = 0
+          - entering amount = 5600
+        -->
+        <button type="submit">
+          Submit Request
+        </button>
+
+      </form>
         <p> Reservation Form Fields: Name, Email, Phone Number, Address, Check-in Date, Check-out Date, Number of Guests, Room Type, Special Requests.
         </p>
     </section>
