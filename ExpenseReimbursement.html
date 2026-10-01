@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="testing.css">
+    <script src="testing.js" defer></script>
+</head>
     <title>Hotel Reservation</title>
 </head>
 <body>
@@ -62,15 +66,18 @@
           <!-- =====================================================
                EXPENSE DATE
                ===================================================== -->
-
+            <div class="date-row">
+            <div class="date-group">
           <label for="StartDate">Start Date</label>
-
+            
           <input
             id="StartDate"
             name="StartDate"
             type="date"
             required
           >
+          </div> 
+          <div class="date-group"><!-- .date-group -->
 
           <br><br>
             <label for="EndDate">End Date</label>
@@ -82,6 +89,8 @@
             required
           >
           <br><br>
+            </div> <!-- .date-group -->
+            </div> <!-- .date-row -->
 
           <!-- =====================================================
                CATEGORY
@@ -188,13 +197,12 @@
           - entering amount = 0
           - entering amount = 5600
         -->
-        <button type="submit">
-          Submit Request
+        <button type="submit" class="floating-btn" aria-label="Submit Request">
+            Submit Request
         </button>
 
       </form>
-        <p> Reservation Form Fields: Name, Email, Phone Number, Address, Check-in Date, Check-out Date, Number of Guests, Room Type, Special Requests.
-        </p>
+     
     </section>
     </main>
 </body>
