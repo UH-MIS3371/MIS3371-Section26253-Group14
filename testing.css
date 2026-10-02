@@ -1,0 +1,43 @@
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    z-index: 9999;
+
+    /* Pill-shaped width so text fits */
+    padding: 15px 30px;
+    border-radius: 50px; 
+    
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effects */
+.floating-btn:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 20px rgba(225, 31, 31, 0.3);
+  background-color: #0056b3; 
+}
+.date-row {
+  display: flex;
+  gap: 20px; /* Space between start and end date groups */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.date-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Stack label above the input */
+  gap: 5px; /* Space between label and input */
+}
+input:focus {
+  border: 2px solid #0056b3; /* Changes the border color */
+  background-color: #f4f9ff;  /* Changes the background color */
+  outline: RGB(0, 86, 179) solid 2px; /* Adds a custom outline */
+}
