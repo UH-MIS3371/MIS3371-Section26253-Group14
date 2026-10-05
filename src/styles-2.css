@@ -1,0 +1,397 @@
+/* ==========================================================
+   HOTEL RESERVATION - STYLES
+   Page order, top to bottom:
+     1. Colors and page basics
+     2. Hero banner
+     3. Search bar (room type, dates, guests)
+     4. Reservation details form
+     5. Room view (photo shown at the bottom)
+     6. Mobile layouts
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   1. COLORS AND PAGE BASICS
+   Change a color here and it updates everywhere it is used.
+   ---------------------------------------------------------- */
+:root {
+    --ink:   #1f2d3d;   /* main text and black buttons */
+    --muted: #5f7285;   /* labels and helper text */
+    --line:  #cfe0ee;   /* thin divider lines */
+    --paper: #ffffff;   /* white cards */
+    --wash:  #eaf4fb;   /* page background */
+    --coral: #4aa3df;   /* small accent dots and focus rings */
+}
+
+/* Makes padding and borders count inside an element's width */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--wash);
+}
+
+
+/* ----------------------------------------------------------
+   2. HERO BANNER
+   The sand-to-teal background and the big title.
+   ---------------------------------------------------------- */
+.hero {
+    padding: 96px 24px 72px;
+    background:
+        radial-gradient(ellipse at 85% 30%, rgba(48, 128, 140, 0.9), transparent 55%),
+        radial-gradient(ellipse at 100% 80%, rgba(110, 190, 190, 0.7), transparent 50%),
+        linear-gradient(100deg, #6f7c72 0%, #a89c8c 35%, #cdbfae 60%, #5b9aa0 100%);
+}
+
+.hero h1 {
+    margin: 0 0 40px;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.2rem);   /* scales with screen width */
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ----------------------------------------------------------
+   3. SEARCH BAR
+   White rounded bar: Type of Rooms, Start Date, End Date,
+   Number of Guests, and the Continue button.
+   ---------------------------------------------------------- */
+.search {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr auto;   /* four fields + button */
+    align-items: stretch;
+    background: var(--paper);
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* One field inside the bar (label on top, input below) */
+.slot {
+    min-width: 0;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px dashed var(--line);   /* divider between fields */
+}
+
+.slot:first-child {
+    border-left: 0;
+}
+
+.slot label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* Small coral dot before each label */
+.slot label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+}
+
+.slot input,
+.slot select {
+    width: 100%;
+    padding: 4px 0;
+    font: inherit;
+    font-size: 1.1rem;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+}
+
+.slot input:focus,
+.slot select:focus {
+    outline: none;
+}
+
+/* Highlights the whole field while you are typing in it */
+.slot:focus-within {
+    background: #faf7f4;
+    border-radius: 14px;
+}
+
+/* Black "Continue" button */
+.find {
+    align-self: center;
+    margin-left: 12px;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background: var(--ink);
+    border-radius: 999px;
+}
+
+.find:hover {
+    background: #000000;
+}
+
+
+/* ----------------------------------------------------------
+   4. RESERVATION DETAILS FORM
+   The white panel with Name, Age, Email, Phone, Address,
+   Special Requests, the receipt checkbox, and Submit.
+   ---------------------------------------------------------- */
+.details {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 16px 64px;
+}
+
+.panel {
+    padding: 40px;
+    background: var(--paper);
+    border-radius: 24px;
+}
+
+.panel h2 {
+    margin: 0 0 6px;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.panel > p {
+    max-width: 70ch;
+    margin: 0 0 28px;
+    color: var(--muted);
+}
+
+/* Two-column layout for the form fields */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Add class="full" to a field to make it span both columns */
+.full {
+    grid-column: 1 / -1;
+}
+
+/* One form field (label above input) */
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font: inherit;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid #8c8c8c;
+    border-radius: 12px;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+/* Red border on a field that was filled in wrongly */
+.field input:user-invalid,
+.field textarea:user-invalid {
+    border-color: #b00020;
+}
+
+/* Receipt checkbox row */
+.check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--ink);
+}
+
+/* "Submit Request" floating button (stays on screen while scrolling) */
+.submit {
+    position: fixed;
+    bottom: 30px;
+    z-index: 9999;
+
+    /* Pill-shaped width so text fits */
+    padding: 15px 30px;
+    border-radius: 50px;
+
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effects */
+.submit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(225, 31, 31, 0.3);
+    background-color: #0056b3;
+}
+
+/* Small list of form fields at the bottom of the panel */
+.fields-note {
+    margin: 28px 0 0;
+    padding-top: 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+}
+
+/* Keyboard focus ring (shows when tabbing through the page) */
+.field input:focus,
+.field textarea:focus,
+.find:focus-visible,
+.submit:focus-visible,
+.change:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------
+   5. ROOM VIEW
+   The photo and description shown at the bottom after
+   someone picks a room type.
+   ---------------------------------------------------------- */
+.roomview {
+    padding: 48px 16px;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+}
+
+/* Keeps the section hidden until a room is chosen */
+.roomview[hidden] {
+    display: none;
+}
+
+.roomview-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;   /* photo on the left, text on the right */
+    gap: 40px;
+    align-items: center;
+}
+
+.roomview-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.roomview-text h2 {
+    margin: 0 0 8px;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.roomview-text p {
+    margin: 0 0 24px;
+    color: var(--muted);
+}
+
+/* "Change room type" button */
+.change {
+    padding: 12px 28px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.change:hover {
+    background: var(--wash);
+}
+
+
+/* ----------------------------------------------------------
+   6. MOBILE LAYOUTS
+   These come last so they override the rules above on
+   smaller screens.
+   ---------------------------------------------------------- */
+
+/* Tablets: search bar becomes two columns */
+@media (max-width: 900px) {
+    .search {
+        grid-template-columns: 1fr 1fr;
+        border-radius: 20px;
+    }
+
+    .slot {
+        border-left: 0;
+        border-top: 1px dashed var(--line);
+    }
+
+    .slot:first-child {
+        border-top: 0;
+    }
+
+    .find {
+        grid-column: 1 / -1;
+        margin: 8px 0 0;
+    }
+}
+
+/* Small tablets and large phones: room photo stacks above text */
+@media (max-width: 700px) {
+    .roomview-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Phones: everything stacks in one column */
+@media (max-width: 560px) {
+    .search {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        padding: 24px 18px;
+    }
+}
