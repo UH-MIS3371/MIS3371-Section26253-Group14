@@ -395,3 +395,13 @@ body {
         padding: 24px 18px;
     }
 }
+.approval {         /* Approval message */
+    margin: 8px 0 0;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #dc0808;
+    background: #fff4d6;
+    border-left: 4px solid #f0a400;
+    border-radius: 8px;
+}

@@ -72,3 +72,15 @@ select.addEventListener("change", showRoom);
 document.getElementById("changeRoom").addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: scrollMode });
 });
+
+
+// Business rule for special requests !!!
+const requests = document.getElementById("description");
+const approvalMessage = document.getElementById("approvalMessage");
+
+function checkApproval() {
+    // if blank hide the message, if not blank the message will appear
+    approvalMessage.hidden = requests.value.trim() === "";
+}
+
+requests.addEventListener("input", checkApproval);
