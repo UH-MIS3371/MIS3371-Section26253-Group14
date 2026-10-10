@@ -84,3 +84,22 @@ function checkApproval() {
 }
 
 requests.addEventListener("input", checkApproval);
+
+const ageInput = document.getElementById("Age");
+const ageError = document.getElementById("ageError");
+
+function checkAge() {
+  const age = parseInt(ageInput.value, 10);
+  const invalid = isNaN(age) || age < 21;
+  ageError.hidden = !invalid;
+  ageInput.setCustomValidity(invalid ? "You must be at least 21." : "");
+}
+ageInput.addEventListener("input", checkAge);
+//ageInput.addEventListener("input", function () {
+   // const age = parseInt(this.value);
+   // if (isNaN(age) || age < 21) {
+  //      ageError.hidden = false;
+  //  } else {
+   //     ageError.hidden = true;
+  //  }
+

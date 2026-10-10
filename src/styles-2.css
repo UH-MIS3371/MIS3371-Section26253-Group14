@@ -58,6 +58,14 @@ body {
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
 }
 
+  .hero {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+      url("https://images.alphacoders.com/437/thumb-1920-437771.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
 /* ----------------------------------------------------------
    3. SEARCH BAR
@@ -396,6 +404,16 @@ body {
     }
 }
 .approval {         /* Approval message */
+    margin: 8px 0 0;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #dc0808;
+    background: #fff4d6;
+    border-left: 4px solid #f0a400;
+    border-radius: 8px;
+}
+.ageError{
     margin: 8px 0 0;
     padding: 10px 14px;
     font-size: 0.9rem;
